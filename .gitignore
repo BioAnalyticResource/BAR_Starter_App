@@ -75,6 +75,7 @@ typings/
 
 #Build
 public/*
+dist
 
 # API keys and secrets
 .env

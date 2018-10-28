@@ -1,4 +1,3 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,14 +10,15 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-        }
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       },
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'sytle-loader',
           'css-loader',
           'sass-loader'
         ]
@@ -28,20 +28,17 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
-      }, {
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          {
-            loader: 'file-loader'
-          }
+            'file-loader',
         ]
       },
       {
         test: /\.html$/,
         use: [
-          {
-            loader: 'html-loader'
-          }
+            'html-loader'
         ]
       }
     ]
@@ -52,9 +49,9 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
-    new MiniCssExtractPlugin({
-      filename:"./src/[name].css",
-      chunkFilename: "[id].css"
+    new HtmlWebpackPlugin({
+      template: './src/FAQ.html',
+      filename: 'FAQ.html'
     })
   ]
 };
