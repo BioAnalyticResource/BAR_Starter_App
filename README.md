@@ -10,11 +10,15 @@ git clone https://github.com/asherpasha/BAR_Starter_App.git
 ```bash
 npm install
 ```
-3. Run development server:
+3. Update packages:
+```bash
+npm update
+```
+4. Run development server:
 ```bash
 npm run develop
 ```
-4. Export production files for the BAR:
+5. Export production files for the BAR:
 ```bash
 npm run build
 ```
