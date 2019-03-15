@@ -12,7 +12,7 @@ npm install
 ```
 3. Update packages:
 ```bash
-npm update
+npm update --depth 999
 ```
 4. Run development server:
 ```bash

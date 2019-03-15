@@ -5,6 +5,11 @@ module.exports = {
   entry: {
     main: './src/app.js',
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {
@@ -16,23 +21,25 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
-        use: [
-          'sytle-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      }, {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
+        rules: [
+          {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              'css-loader',
+            ],
+          },
         ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash].[ext]',
+            },
+          },
         ],
       },
       {
